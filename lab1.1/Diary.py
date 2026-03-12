@@ -23,12 +23,15 @@ class Diary:
 
     def print_statistics(self):
         count = len(self.entries)
+        if count == 0:
+            print("Sissekandeid pole, statistikat ei saa arvutada.")
+            return
 
         total_chr = sum(len(entry) for entry in self.entries)
         avg_chr = total_chr / count
 
         print(f"Sissekannete arv: {count}")
-        print(f"Keskmine tähemärkide arv sissekandes: {avg_chr}")
+        print(f"Keskmine tähemärkide arv sissekandes: {avg_chr:.2f}")
 
     def __str__(self):
         return "\n".join(self.entries)
