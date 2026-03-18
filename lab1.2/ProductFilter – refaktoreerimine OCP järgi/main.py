@@ -25,4 +25,4 @@ if __name__ == "__main__":
         print("Large blue items:")
     large_blue = large & ColorSpecification(Color.BLUE)
     for p in bf.filter(products, large_blue):
-        print(f" - {p.name} is large and blue"))
+        print(f" - {p.name} is large and blue")
