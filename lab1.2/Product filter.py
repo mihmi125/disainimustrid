@@ -1,16 +1,16 @@
 from enum import Enum
 
 class Color(Enum):
-    RED = "Red"
-    GREEN = "Green"
-    BLUE = "Blue"
+    RED = 1
+    GREEN = 2
+    BLUE = 3
 
 
 
 class Size(Enum):
-    SMALL = "Small"
-    MEDIUM = "Medium"
-    LARGE = "Large"
+    SMALL = 1
+    MEDIUM = 2
+    LARGE = 3
 
 
 class Product:
@@ -18,7 +18,6 @@ class Product:
         self.name = name
         self.color = color
         self.size = size
-
 
 
 class ProductFilter:
