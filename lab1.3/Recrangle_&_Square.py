@@ -48,9 +48,3 @@ def use_shape(shape):
 
     print(f"Expected area: {expected_area}")
     print(f"Actual area: {actual_area}\n")
-
-r = Rectangle(2, 3)
-use_shape(r)
-
-s = Square(5)
-use_shape(s)
