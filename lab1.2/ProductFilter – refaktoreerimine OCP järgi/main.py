@@ -1,6 +1,6 @@
-from product import Product, Color, Size
-from specification import ColorSpecification, SizeSpecification
-from filter import BetterFilter
+from Product import Product, Color, Size
+from Specification import ColorSpecification, SizeSpecification
+from Filter import BetterFilter
 
 if __name__ == "__main__":
 
