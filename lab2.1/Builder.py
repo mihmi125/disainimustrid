@@ -18,5 +18,8 @@ class CodeBuilder:
         return "\n".join(lines)
 
 if __name__ == "__main__":
-    cb = CodeBuilder('Person').add_field('name', '""').add_field('age', '0')
+    cb = (CodeBuilder('Person')
+          .add_field('name', '""')
+          .add_field('age', '0')
+          )
     print(cb)
