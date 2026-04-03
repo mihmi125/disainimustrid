@@ -1,8 +1,9 @@
 from random import randint
 
 class Generator:
-    def generator(self, count):
-        return [randint(0, 9) for _ in range(count)]
+    def generate(self, count):
+        # Generates 'count' numbers in range 1-9
+        return [randint(1, 9) for _ in range(count)]
 
 class Splitter:
     def split(self, matrix):
@@ -12,38 +13,50 @@ class Splitter:
         result.extend(matrix)
 
         for c in range(size):
-            column = []
-            for r in range(size):
-                column.append(matrix[r][c])
+            column = [matrix[r][c] for r in range(size)]
             result.append(column)
 
-        diagonal1 = []
-        for r in range(size):
-            diagonal1.append(matrix[r][r])
+        diagonal1 = [matrix[i][i] for i in range(size)]
         result.append(diagonal1)
 
-        diagonal2 = []
-        for c in range(size):
-            col_idx = size -1 -c
-            diagonal2.append(matrix[c][col_idx])
+        diagonal2 = [matrix[i][size - 1 - i] for i in range(size)]
         result.append(diagonal2)
 
         return result
 
-
 class Verifier:
-    pass
-
+    def verify(self, sequences):
+        if not sequences:
+            return False
+        
+        target_sum = sum(sequences[0])
+        
+        return all(sum(seq) == target_sum for seq in sequences)
 
 class MagicSquareGenerator:
-    pass
+    def __init__(self):
+        self.generator = Generator()
+        self.splitter = Splitter()
+        self.verifier = Verifier()
+
+    def generate(self, size):
+        while True:
+            data = self.generator.generate(size * size)
+            
+            matrix = []
+            for i in range(0, len(data), size):
+                matrix.append(data[i : i + size])
+            
+            sequences = self.splitter.split(matrix)
+            
+            if self.verifier.verify(sequences):
+                return matrix
 
 
-matrix = [
-    [2, 7, 6],
-    [9, 5, 1],
-    [4, 3, 8]
-]
+gen = MagicSquareGenerator()
 
-s = Splitter()
-print(s.split(matrix))
+print("Searching for a 3x3 magic square (this may take a moment)...")
+square = gen.generate(3)
+
+for row in square:
+    print(row)
