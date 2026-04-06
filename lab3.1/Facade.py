@@ -57,7 +57,7 @@ class MagicSquareGenerator:
 
 
 gen = MagicSquareGenerator()
-square = gen.generate(10)
+square = gen.generate(3)
 
 for row in square:
     print(row)
